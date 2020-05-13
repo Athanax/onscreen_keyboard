@@ -1,8 +1,8 @@
 name: onscreen_keyboard
-description: A new Flutter package project.
+description: A new Flutter package for android tv simple keyboard.
 version: 0.0.1
-author: Athanax KE <athanaxwambua@gmail.com>
-homepage:
+author: Athanas KE <athanaxwambua@gmail.com>
+homepage: https://github.com/Athanax/onscreen_keyboard
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
