@@ -1,8 +1,10 @@
 # onscreen_keyboard
 
-A new Flutter package project for android TV.
+## Introduction
 
-# Installation
+A simple package for dispaying virtual keyboards on android TV. It can also be used on mobile devices. The package fully responds to D-Pad controls.
+
+## Installation
 
 Add the dependency to your pubspec.yaml file.
 
@@ -14,7 +16,7 @@ dependencies:
 
 ```
 
-# Import class
+## Import class
 
 ``` dart
 
@@ -22,30 +24,28 @@ import 'package:onscreen_keyboard/onscreen_keyboard.dart';
 
 ```
 
-# How to implement in code
+## How to implement in code
 
-The height and width of the keyboard must be specified
 
 The onChanged is a Signature for callbacks that returns a string that is already typed, in is called whenever the value changes.
 
 ``` dart
 
-OnscreenKeyboard(
-    backgroundColor: Colors.blue,
-    buttonColor: Colors.amber,
-    focusColor: Colors.red,
-    onChanged: (txt) {
-        setState(() {
-        text = txt;
-        });
-    },
-    height: 300,
-    width: 300,
+new OnscreenKeyboard(
+  value: 'atha',
+  backgroundColor: Colors.blue,
+  buttonColor: Colors.amber,
+  focusColor: Colors.red,
+  onChanged: (txt) {
+    setState(() {
+      text = txt;
+    });
+  },
 ),
 
 ```
 
-# Example
+## Example
 
 ``` dart
 
@@ -96,17 +96,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Expanded(
-              child: new OnscreenKeyboard(
-                backgroundColor: Colors.blue,
-                buttonColor: Colors.amber,
-                focusColor: Colors.red,
-                onChanged: (txt) {
-                  setState(() {
-                    text = txt;
-                  });
-                },
-                height: 300,
+              child: Container(
                 width: 300,
+                child: new OnscreenKeyboard(
+                  value: 'atha',
+                  backgroundColor: Colors.blue,
+                  buttonColor: Colors.amber,
+                  focusColor: Colors.red,
+                  onChanged: (txt) {
+                    setState(() {
+                      text = txt;
+                    });
+                  },
+                ),
               ),
             ),
             //
@@ -118,9 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+
 ```
 
-![Demo screenshot!](/assets/screenshot.png "Demo screenshot")
 
 ## Getting started with flutter?
 

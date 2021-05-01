@@ -45,17 +45,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Expanded(
-              child: new OnscreenKeyboard(
-                backgroundColor: Colors.blue,
-                buttonColor: Colors.amber,
-                focusColor: Colors.red,
-                onChanged: (txt) {
-                  setState(() {
-                    text = txt;
-                  });
-                },
-                height: 300,
+              child: Container(
                 width: 300,
+                child: new OnscreenKeyboard(
+                  value: 'atha',
+                  backgroundColor: Colors.blue,
+                  buttonColor: Colors.amber,
+                  focusColor: Colors.red,
+                  onChanged: (txt) {
+                    setState(() {
+                      text = txt;
+                    });
+                  },
+                ),
               ),
             ),
             //

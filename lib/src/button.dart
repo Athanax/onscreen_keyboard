@@ -7,9 +7,11 @@ class Button extends StatefulWidget {
   final Color borderColor;
   final Color buttonColor;
   final Color focusColor;
+  final bool autofocus;
   Button({
     @required this.label,
     this.onPressed,
+    this.autofocus,
     this.borderColor,
     this.focusColor,
     this.buttonColor,
@@ -25,23 +27,15 @@ class _ButtonState extends State<Button> {
   @override
   void initState() {
     _node = new FocusNode();
-    // _node.addListener(_onChangedFocus);
     super.initState();
   }
-
-  // void _onChangedFocus() {
-  //   if (_node.hasFocus == true) {
-  //     // true
-  //   } else {
-  //     // false
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(2),
       child: RawMaterialButton(
+        autofocus: widget.autofocus ?? widget.autofocus,
         fillColor: widget.buttonColor ?? widget.buttonColor,
         shape:
             ContinuousRectangleBorder(borderRadius: BorderRadius.circular(10)),
