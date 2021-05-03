@@ -8,13 +8,13 @@ import 'package:onscreen_keyboard/src/utils.dart';
 ///
 ///
 class OnscreenKeyboard extends StatelessWidget {
-  final ValueChanged<String> onChanged;
-  final String value;
+  final ValueChanged<String?>? onChanged;
+  final String? value;
   final InitialCase initialCase;
-  final Color borderColor;
-  final Color backgroundColor;
-  final Color buttonColor;
-  final Color focusColor;
+  final Color? borderColor;
+  final Color? backgroundColor;
+  final Color? buttonColor;
+  final Color? focusColor;
   OnscreenKeyboard({
     this.onChanged,
     this.backgroundColor,
@@ -22,7 +22,7 @@ class OnscreenKeyboard extends StatelessWidget {
     this.borderColor,
     this.buttonColor,
     this.value,
-    @required this.initialCase,
+    required this.initialCase,
   });
   @override
   Widget build(BuildContext context) {
@@ -45,13 +45,13 @@ class OnscreenKeyboard extends StatelessWidget {
 }
 
 class OnscreenKeyboardWidget extends StatefulWidget {
-  final ValueChanged<String> onChanged;
-  final InitialCase initialCase;
-  final String value;
-  final Color borderColor;
-  final Color backgroundColor;
-  final Color buttonColor;
-  final Color focusColor;
+  final ValueChanged<String?>? onChanged;
+  final InitialCase? initialCase;
+  final String? value;
+  final Color? borderColor;
+  final Color? backgroundColor;
+  final Color? buttonColor;
+  final Color? focusColor;
   OnscreenKeyboardWidget({
     this.onChanged,
     this.backgroundColor,
@@ -66,21 +66,19 @@ class OnscreenKeyboardWidget extends StatefulWidget {
 }
 
 class _OnscreenKeyboardWidgetState extends State<OnscreenKeyboardWidget> {
-  String text = '';
-  InitialCase _initialCase;
+  String? text = '';
   @override
   void initState() {
     //
     super.initState();
     if (widget.value != null) {
       text = widget.value;
-      _initialCase = widget.initialCase;
     }
   }
 
   void specialCharacters() {
     //
-    var state = BlocProvider.of<KeyboardShiftBloc>(context).state;
+    KeyboardShiftState state = BlocProvider.of<KeyboardShiftBloc>(context).state;
     if (state is KeyboardShiftSymbols) {
       BlocProvider.of<KeyboardShiftBloc>(context)
           .add(KeyboardShiftUpperCaseEvent());
@@ -91,7 +89,7 @@ class _OnscreenKeyboardWidgetState extends State<OnscreenKeyboardWidget> {
   }
 
   void shift() {
-    var state = BlocProvider.of<KeyboardShiftBloc>(context).state;
+    KeyboardShiftState state = BlocProvider.of<KeyboardShiftBloc>(context).state;
     if (state is KeyboardShiftUpperCase) {
       BlocProvider.of<KeyboardShiftBloc>(context)
           .add(KeyboardShiftLowerCaseEvent());
@@ -190,7 +188,7 @@ class _OnscreenKeyboardWidgetState extends State<OnscreenKeyboardWidget> {
                         onPressed: () {
                           text = '';
                           setState(() {});
-                          widget.onChanged(text);
+                          widget.onChanged!(text);
                         },
                         label: new Text(
                           'CLEAR',
@@ -206,9 +204,9 @@ class _OnscreenKeyboardWidgetState extends State<OnscreenKeyboardWidget> {
                         borderColor: widget.borderColor ?? widget.borderColor,
                         buttonColor: widget.buttonColor ?? widget.buttonColor,
                         onPressed: () {
-                          text = text + ' ';
+                          text = text! + ' ';
                           setState(() {});
-                          widget.onChanged(text);
+                          widget.onChanged!(text);
                         },
                         label: new Icon(
                           Icons.space_bar,
@@ -234,11 +232,11 @@ class _OnscreenKeyboardWidgetState extends State<OnscreenKeyboardWidget> {
                 borderColor: widget.borderColor ?? widget.borderColor,
                 buttonColor: widget.buttonColor ?? widget.buttonColor,
                 onPressed: () {
-                  if (text.length > 0) {
-                    text = text.substring(0, text.length - 1);
+                  if (text!.length > 0) {
+                    text = text!.substring(0, text!.length - 1);
                   }
                   setState(() {});
-                  widget.onChanged(text);
+                  widget.onChanged!(text);
                 },
                 label: new Icon(
                   Icons.backspace,
@@ -297,9 +295,9 @@ class _OnscreenKeyboardWidgetState extends State<OnscreenKeyboardWidget> {
               style: new TextStyle(fontSize: 25),
             ),
             onPressed: () {
-              text = text + labels[index];
+              text = text! + labels[index];
               setState(() {});
-              widget.onChanged(text);
+              widget.onChanged!(text);
             },
           );
         });

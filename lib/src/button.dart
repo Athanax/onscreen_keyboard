@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:onscreen_keyboard/src/button_widget.dart';
 
 class Button extends StatefulWidget {
-  final Function onPressed;
+  final Function? onPressed;
   final Widget label;
-  final Color borderColor;
-  final Color buttonColor;
-  final Color focusColor;
-  final bool autofocus;
+  final Color? borderColor;
+  final Color? buttonColor;
+  final Color? focusColor;
+  final bool? autofocus;
   Button({
-    @required this.label,
+    required this.label,
     this.onPressed,
     this.autofocus,
     this.borderColor,
@@ -22,7 +22,7 @@ class Button extends StatefulWidget {
 }
 
 class _ButtonState extends State<Button> {
-  FocusNode _node;
+  FocusNode? _node;
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _ButtonState extends State<Button> {
         highlightElevation: 0,
         focusElevation: 0,
         hoverElevation: 0,
-        autofocus: widget.autofocus ?? widget.autofocus,
+        autofocus: widget.autofocus ?? widget.autofocus!,
         fillColor: widget.buttonColor ?? widget.buttonColor,
         shape:
             ContinuousRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -46,7 +46,7 @@ class _ButtonState extends State<Button> {
         focusColor: widget.focusColor ?? widget.focusColor,
         focusNode: _node,
         onPressed: () {
-          widget.onPressed();
+          widget.onPressed!();
         },
         child: new ButtonWidget(
           label: widget.label,
