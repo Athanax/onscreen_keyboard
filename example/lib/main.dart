@@ -9,9 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.dark(),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -46,11 +44,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Expanded(
               child: Container(
-                width: 300,
+                width: 400,
                 child: new OnscreenKeyboard(
                   value: 'atha',
-                  backgroundColor: Colors.blue,
-                  buttonColor: Colors.amber,
+                  initialCase: InitialCase.LOWER_CASE,
+                  backgroundColor: Colors.transparent,
+                  buttonColor: Colors.transparent,
                   focusColor: Colors.red,
                   onChanged: (txt) {
                     setState(() {

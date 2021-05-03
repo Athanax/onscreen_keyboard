@@ -35,11 +35,14 @@ class _ButtonState extends State<Button> {
     return Container(
       margin: EdgeInsets.all(2),
       child: RawMaterialButton(
+        highlightElevation: 0,
+        focusElevation: 0,
+        hoverElevation: 0,
         autofocus: widget.autofocus ?? widget.autofocus,
         fillColor: widget.buttonColor ?? widget.buttonColor,
         shape:
             ContinuousRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        elevation: 20,
+        elevation: 0,
         focusColor: widget.focusColor ?? widget.focusColor,
         focusNode: _node,
         onPressed: () {
