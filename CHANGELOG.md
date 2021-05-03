@@ -1,3 +1,8 @@
+## [1.0.2] - Mon May 3, 2021
+
+* Migrate to null safety
+* Change keyboard view
+
 ## [1.0.1] - Wed Sept 16, 2020
 
 * Add uppercase, lowercase and special characters

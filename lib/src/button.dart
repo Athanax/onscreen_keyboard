@@ -15,7 +15,7 @@ class Button extends StatefulWidget {
     this.borderColor,
     this.focusColor,
     this.buttonColor,
-  }) : assert(label != null, 'label must be provided in the button widget');
+  });
 
   @override
   _ButtonState createState() => _ButtonState();
