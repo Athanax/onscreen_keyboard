@@ -1,3 +1,7 @@
+## [1.0.3] - Mon May 4, 2022
+
+* move to bloc: ^8.0.3 and flutter_bloc: ^8.0.1
+
 ## [1.0.2] - Mon May 3, 2021
 
 * Migrate to null safety

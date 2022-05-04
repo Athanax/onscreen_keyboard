@@ -1,6 +1,6 @@
 name: onscreen_keyboard
 description: A simple package for dispaying virtual keyboards on android TV. It can also be used on mobile devices. The package fully responds to D-Pad controls.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/Athanax/onscreen_keyboard
 
 environment:
