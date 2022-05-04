@@ -10,8 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   equatable: ^2.0.0
-  flutter_bloc: ^7.0.0
-  bloc: ^7.0.0
+  flutter_bloc: ^8.0.1
+  bloc: ^8.0.3
 
 dev_dependencies:
   flutter_test:

@@ -11,21 +11,20 @@ part 'keyboard_shift_event.dart';
 part 'keyboard_shift_state.dart';
 
 class KeyboardShiftBloc extends Bloc<KeyboardShiftEvent, KeyboardShiftState> {
-  KeyboardShiftBloc() : super(KeyboardShiftInitial());
+  KeyboardShiftBloc() : super(KeyboardShiftInitial()) {
+    on((event, emit) => (emit(KeyboardShiftLoading(loading))));
 
-  @override
-  Stream<KeyboardShiftState> mapEventToState(KeyboardShiftEvent event) async* {
-    //
-    yield KeyboardShiftLoading(loading);
-    if (event is KeyboardShiftUpperCaseEvent) {
+    on<KeyboardShiftUpperCaseEvent>((event, emit) {
       //
-      yield KeyboardShiftUpperCase(upperCase);
-    } else if (event is KeyboardShiftSymbolsEvent) {
+      emit(KeyboardShiftUpperCase(upperCase));
+    });
+    on<KeyboardShiftSymbolsEvent>((event, emit) {
       //
-      yield KeyboardShiftSymbols(symbols);
-    } else if (event is KeyboardShiftLowerCaseEvent) {
+      emit(KeyboardShiftSymbols(symbols));
+    });
+    on<KeyboardShiftLowerCaseEvent>((event, emit) {
       //
-      yield KeyboardShiftLowerCase(lowerCase);
-    }
+      emit(KeyboardShiftLowerCase(lowerCase));
+    });
   }
 }
